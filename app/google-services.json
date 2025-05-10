@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "758852807044",
+    "project_id": "rede-social-7e0a7",
+    "storage_bucket": "rede-social-7e0a7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758852807044:android:09d58ba7597297498315d1",
+        "android_client_info": {
+          "package_name": "edu.ifsp.com.br.redesocialrc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqL_2WgSy7J1H3TmTqaUHzAdyuCc2o204"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
