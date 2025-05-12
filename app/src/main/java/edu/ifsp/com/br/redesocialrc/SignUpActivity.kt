@@ -26,7 +26,7 @@ class SignUpActivity : AppCompatActivity() {
                     .createUserWithEmailAndPassword(email, senha)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            startActivity(Intent(this, ProfileActivity::class.java))
+                            startActivity(Intent(this, FeedActivity::class.java))
                             Toast.makeText(this, "Usuario criado", Toast.LENGTH_LONG).show()
                             finish()
                         } else {

@@ -73,13 +73,13 @@ class ProfileActivity : AppCompatActivity() {
 
         bottomNavigationView.selectedItemId = R.id.profileFragment
     }
-
     private fun saveProfileData() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
             val userId = currentUser.uid
             val email = currentUser.email.toString()
             val nomeCompleto = binding.textNameComplete.text.toString()
+            val novaSenha = binding.editNewPassword.text.toString()
 
             val profileImageDrawable: Drawable? = if (selectedImageUri != null) {
                 binding.profileImage.drawable
@@ -107,8 +107,17 @@ class ProfileActivity : AppCompatActivity() {
             val dados = hashMapOf(
                 "nomeCompleto" to nomeCompleto,
                 "email" to email,
-                "fotoPerfil" to fotoPerfilString
+                "fotoPerfil" to fotoPerfilString,
+                "senha" to novaSenha // adicionando senha nos dados
             )
+
+            if (novaSenha.isNotEmpty()) {
+                currentUser.updatePassword(novaSenha)
+                    .addOnFailureListener { e ->
+                        e.printStackTrace()
+                        Toast.makeText(this, "Erro ao atualizar senha: ${e.message}", Toast.LENGTH_LONG).show()
+                    }
+            }
 
             db.collection("usuarios").document(userId)
                 .set(dados)
@@ -118,8 +127,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
                 .addOnFailureListener { e ->
                     e.printStackTrace()
-                    Toast.makeText(this, "Erro ao salvar os dados: ${e.message}", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(this, "Erro ao salvar os dados: ${e.message}", Toast.LENGTH_LONG).show()
                 }
         }
     }
