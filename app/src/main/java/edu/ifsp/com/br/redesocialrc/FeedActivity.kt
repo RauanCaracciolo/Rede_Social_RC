@@ -29,7 +29,7 @@ class FeedActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        loadPosts()
+        binding.fabReloadFeed.setOnClickListener{ loadPosts()}
 
 
         val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
